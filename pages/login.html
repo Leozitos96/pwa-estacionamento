@@ -3,21 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Estacionamento - Login</title>
     <link rel="stylesheet" href="../styles/login.css">
 </head>
 <body>
-     <main class="login-container">
-    <h1>Login do Operador</h1>
-    <form id="loginForm">
-      <label for="email">Email:</label>
-      <input type="email" id="email" required>
+    
+    <form id="login-form" class="form">
+  <p class="form-title">Login - Estacionamento</p>
+  <div class="input-container">
+    <input id="email" type="email" placeholder="Escreva seu e-mail" required>
+  </div>
+  <div class="input-container">
+    <input id="password" type="password" placeholder="Escreva sua senha" required>
+  </div>
+  <button type="submit" class="submit">
+    Entrar
+  </button>
+     </form>
 
-      <label for="password">Senha:</label>
-      <input type="password" id="password" required>
-
-      <button type="submit">Entrar</button>
-    </form>
-  </main>
 </body>
 </html>
