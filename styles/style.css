@@ -1,0 +1,117 @@
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f5f6fa;
+  color: #333;
+}
+
+
+header {
+  background-color: #2f3640;
+  color: #fff;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.estacionamento-container {
+  text-align: center;
+  padding: 2rem;
+}
+
+.vagas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+
+.vaga {
+  padding: 1rem;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.vaga:hover {
+  transform: scale(1.05);
+}
+
+
+.vaga.livre {
+  background-color: #44bd32;
+}
+
+.vaga.ocupada {
+  background-color: #e84118;
+}
+
+.vaga.reservada {
+  background-color: #fbc531;
+  color: #333;
+}
+
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #2f3640;
+  color: #fff;
+}
+
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-container {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  width: 300px;
+  text-align: center;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-container button {
+  width: 100%;
+  background: #273c75;
+  color: white;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-container button:hover {
+  background: #40739e;
+}
+
+/*RESPONSIVIDADE */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1rem;
+  }
+
+  .vaga {
+    font-size: 0.9rem;
+  }
+}
