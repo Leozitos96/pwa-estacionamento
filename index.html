@@ -1,14 +1,43 @@
 <!DOCTYPE html>
-<html lang="br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estacionamento</title>
-    <link rel="stylesheet" href="styles/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estacionamento - Painel</title>
+  <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    
 
-    <script src="scripts/firebaseConfig.js"></script>
+  <header>
+    <h1>Gerenciador de Estacionamento</h1>
+    <button id="logoutBtn">Sair</button>
+  </header>
+
+  <main>
+    <section class="estacionamento-container">
+      <h2>Mapa do Estacionamento</h2>
+      <div class="vagas-grid">
+        <!-- Exemplo de 12 vagas -->
+        <div class="vaga livre" data-status="livre">Vaga 1</div>
+        <div class="vaga ocupada" data-status="ocupada">Vaga 2</div>
+        <div class="vaga reservada" data-status="reservada">Vaga 3</div>
+        <div class="vaga livre" data-status="livre">Vaga 4</div>
+        <div class="vaga livre" data-status="livre">Vaga 5</div>
+        <div class="vaga ocupada" data-status="ocupada">Vaga 6</div>
+        <div class="vaga livre" data-status="livre">Vaga 7</div>
+        <div class="vaga reservada" data-status="reservada">Vaga 8</div>
+        <div class="vaga livre" data-status="livre">Vaga 9</div>
+        <div class="vaga ocupada" data-status="ocupada">Vaga 10</div>
+        <div class="vaga livre" data-status="livre">Vaga 11</div>
+        <div class="vaga reservada" data-status="reservada">Vaga 12</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Estacionamento PWA | Desenvolvido pelo Trio</p>
+  </footer>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/firebaseConfig.js"></script>
 </body>
 </html>
