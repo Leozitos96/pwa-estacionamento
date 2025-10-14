@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estacionamento - Login</title>
-    <link rel="stylesheet" href="../styles/login.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estacionamento - Login</title>
+  <link rel="stylesheet" href="../styles/login.css">
 </head>
+
 <body>
-    
-    <form id="login-form" class="form">
-  <p class="form-title">Login - Estacionamento</p>
-  <div class="input-container">
-    <input id="email" type="email" placeholder="Escreva seu e-mail" required>
-  </div>
-  <div class="input-container">
-    <input id="password" type="password" placeholder="Escreva sua senha" required>
-  </div>
-  <button type="submit" class="submit">
-    Entrar
-  </button>
-     </form>
+
+  <form id="login-form" class="form">
+    <p class="form-title">Login - Estacionamento</p>
+    <div class="input-container">
+      <input id="email" type="email" placeholder="Escreva seu e-mail" required>
+    </div>
+    <div class="input-container">
+      <input id="password" type="password" placeholder="Escreva sua senha" required>
+    </div>
+    <button type="submit" class="submit" id="botao-login">
+      Entrar
+    </button>
+  </form>
+
+  <script type="module" src="../scripts/firebaseConfig.js"></script>
+  <script type="module" src="../scripts/auth.js"></script>
 
 </body>
+
 </html>

@@ -7,6 +7,15 @@ body {
 }
 
 
+html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+main {
+  flex: 1;
+}
+
 header {
   background-color: #3a4657;
   color: #fff;
@@ -30,6 +39,19 @@ header {
   margin: 0 auto;
 }
 
+#logoutBtn{
+  padding: 0.4rem;
+  border-radius: 8px;
+  color: white;
+  background-color: #333;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+#logoutBtn:hover {
+  transform: scale(1.05);
+}
 
 .vaga {
   padding: 1rem;
@@ -51,11 +73,6 @@ header {
 
 .vaga.ocupada {
   background-color: #e84118;
-}
-
-.vaga.reservada {
-  background-color: #fbc531;
-  color: #333;
 }
 
 
@@ -105,7 +122,6 @@ footer {
   background: #40739e;
 }
 
-/*RESPONSIVIDADE */
 @media (max-width: 600px) {
   header h1 {
     font-size: 1rem;
