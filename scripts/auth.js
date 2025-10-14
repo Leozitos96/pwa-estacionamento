@@ -1,8 +1,16 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } 
-  from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-import { getFirestore, doc, setDoc, collection, getDocs } 
-  from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { 
+  getAuth, 
+  createUserWithEmailAndPassword, 
+  signInWithEmailAndPassword 
+} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+import { 
+  getFirestore, 
+  doc, 
+  setDoc, 
+  collection, 
+  getDocs 
+} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyB52N1JBgWdWoxiZfobH0NxcRaNh6N3-Y8",
@@ -18,34 +26,47 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 const botao_registro = document.getElementById('botao_registro');
+if (botao_registro) {
+  botao_registro.addEventListener('click', async (e) => {
+    e.preventDefault();
+    const email_form = document.getElementById('registro_email').value;
+    const senha_form = document.getElementById('registro_password').value;
 
-botao_registro.addEventListener('click', async (e) => {
-  e.preventDefault();
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email_form, senha_form);
+      const user = userCredential.user;
 
-  const email_form = document.getElementById('registro_email').value;
-  const senha_form = document.getElementById('registro_password').value;
+      await setDoc(doc(db, "usuarios", user.uid), {
+        email: email_form,
+        criadoEm: new Date()
+      });
+      console.log('Usuário criado no Firestore:', user.uid);
+      alert("Usuário criado com sucesso!");
+    } catch (error) {
+      console.error("Erro ao registrar-se:", error.code, error.message);
+      alert("Erro ao registrar: " + error.message);
+    }
+  });
+}
 
-  try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email_form, senha_form);
-    const user = userCredential.user;
+const botao_login = document.getElementById('botao-login');
+if (botao_login) {
+  botao_login.addEventListener('click', async (e) => {
+    e.preventDefault();
 
-    await setDoc(doc(db, "usuarios", user.uid), {
-      email: email_form,
-      criadoEm: new Date()
-    });
-    console.log('Usuário criado no Firestore:', user.uid);
-  } catch (error) {
-    console.error("Erro ao registrar-se:", error.code, error.message);
-  }
-});
+    const email = document.getElementById('email').value;
+    const senha = document.getElementById('password').value;
 
-async function login(email, senha) {
-  try {
-    const userCredential = await signInWithEmailAndPassword(auth, email, senha);
-    console.log("Usuário logado:", userCredential.user.uid);
-  } catch (error) {
-    console.error("Erro ao logar:", error.code, error.message);
-  }
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, senha);
+      console.log("Usuário logado:", userCredential.user.uid);
+      alert("Login realizado com sucesso!");
+      window.location.href = "../index.html";
+    } catch (error) {
+      console.error("Erro ao logar:", error.code, error.message);
+      alert("Erro ao logar, verifique suas credenciais!");
+    }
+  });
 }
 
 async function getCities() {
