@@ -1,0 +1,22 @@
+{
+  "name": "Estacionamento PWA",
+  "short_name": "Estacionamento",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4B0082",
+  "orientation": "portrait",
+  "description": "Gerenciador de estacionamento com suporte offline",
+  "icons": [
+    {
+      "src": "./img/buscacarro.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./img/carross.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
