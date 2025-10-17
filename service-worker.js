@@ -1,6 +1,7 @@
 const CACHE_NAME = 'estacionamento-pwa-v1';
 const urlsToCache = [
   './',
+  './pages/login.html',
   './index.html',
   './styles/style.css',
   './scripts/app.js',
