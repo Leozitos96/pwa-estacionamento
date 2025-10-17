@@ -36,18 +36,18 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 });
 
-botao_sair.addEventListener('click',async () =>{
-    window.location.href = "pages/login.html";
+botao_sair.addEventListener('click', async () => {
+  window.location.href = "pages/login.html";
 });
 
 
 function atualizarCor(div) {
   const status = div.dataset.status;
   if (status === "livre") {
-    div.style.backgroundColor = "#4CAF50"; // verde
+    div.style.backgroundColor = "#4CAF50";
     div.style.color = "#fff";
   } else if (status === "ocupada") {
-    div.style.backgroundColor = "#f44336"; // vermelho
+    div.style.backgroundColor = "#f44336";
     div.style.color = "#fff";
   }
 

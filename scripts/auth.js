@@ -1,15 +1,15 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { 
-  getAuth, 
-  createUserWithEmailAndPassword, 
-  signInWithEmailAndPassword 
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-import { 
-  getFirestore, 
-  doc, 
-  setDoc, 
-  collection, 
-  getDocs 
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  collection,
+  getDocs
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -21,9 +21,22 @@ const firebaseConfig = {
   appId: "1:1036357381383:web:3aebfc0703e6adb1cb29a2"
 };
 
+
+const url = './login.json'
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+
+
+
+$.post(url,{
+  
+  data:JSON.stringify()
+}
+  ,callback);
+
+
+
 
 const botao_registro = document.getElementById('botao_registro');
 if (botao_registro) {
@@ -60,8 +73,8 @@ if (botao_login) {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, senha);
       console.log("Usuário logado:", userCredential.user.uid);
-      alert("Login realizado com sucesso!");
-      window.location.href = "../index.html";
+      $.
+        window.location.href = "../index.html";
     } catch (error) {
       console.error("Erro ao logar:", error.code, error.message);
       alert("Erro ao logar, verifique suas credenciais!");
