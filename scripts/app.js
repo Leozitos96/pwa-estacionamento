@@ -8,7 +8,7 @@ const botao_sair = document.getElementById("logoutBtn");
 onAuthStateChanged(auth, (user) => {
   if (!user) {
     alert('Precisa logar primeiro!');
-    window.location.href = "../pages/login.html";
+      window.location.href = "/pwa-estacionamento/pages/login.html";
   }
 });
 
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 botao_sair.addEventListener('click', async () => {
   await signOut(auth);
-  window.location.href = "../pages/login.html";
+  window.location.href = "/pwa-estacionamento/pages/login.html";
 });
 
 function atualizarCor(div) {
