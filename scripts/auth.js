@@ -2,7 +2,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebas
 import {
   getAuth,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  signOut
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 import {
   getFirestore,
@@ -21,22 +22,16 @@ const firebaseConfig = {
   appId: "1:1036357381383:web:3aebfc0703e6adb1cb29a2"
 };
 
-
 const url = './login.json'
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
 
-
-$.post(url,{
-  
-  data:JSON.stringify()
+export async function logout() {
+  await signOut(auth);
+  localStorage.removeItem('authToken');
 }
-  ,callback);
-
-
-
 
 const botao_registro = document.getElementById('botao_registro');
 if (botao_registro) {
@@ -72,11 +67,12 @@ if (botao_login) {
 
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, senha);
-      console.log("Usuário logado:", userCredential.user.uid);
-      $.
+        const user = userCredential.user;
+        const token = await user.getIdToken();
+        localStorage.setItem('authToken', token);
         window.location.href = "../index.html";
     } catch (error) {
-      console.error("Erro ao logar:", error.code, error.message);
+      console.error("Erro ao logar:", error.message);
       alert("Erro ao logar, verifique suas credenciais!");
     }
   });

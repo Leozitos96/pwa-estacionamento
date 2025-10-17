@@ -6,11 +6,20 @@ import {
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 import { db } from "./firebaseConfig.js";
 
+import { logout } from "./auth.js";
+
 const botao_sair = document.getElementById("logoutBtn");
+
+const token = localStorage.getItem('authToken');
+
+if(!token){
+    window.location.href = "../pages/login.html";
+}
+
+
 
 document.addEventListener("DOMContentLoaded", async () => {
   const vagasContainer = document.querySelector(".vagas-grid");
-
   const novasVagas = await getDocs(collection(db, "vagas"));
 
   novasVagas.forEach((e) => {
@@ -35,8 +44,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     vagasContainer.appendChild(div);
   });
 });
-
 botao_sair.addEventListener('click', async () => {
+  logout();
   window.location.href = "pages/login.html";
 });
 
