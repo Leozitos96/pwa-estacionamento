@@ -13,7 +13,8 @@ const botao_sair = document.getElementById("logoutBtn");
 const token = localStorage.getItem('authToken');
 
 if(!token){
-    window.location.href = "../pages/login.html";
+  await alert('Precisa logar primeiro!')  
+  window.location.href = "../pages/login.html";
 }
 
 
