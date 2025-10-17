@@ -1,23 +1,16 @@
-import {
-  collection,
-  doc,
-  getDocs,
-  setDoc
-} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { collection, doc, getDocs, setDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 import { db } from "./firebaseConfig.js";
-
-import { logout } from "./auth.js";
+import { auth } from "./firebaseConfig.js";
+import { signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
 const botao_sair = document.getElementById("logoutBtn");
 
-const token = localStorage.getItem('authToken');
-
-if(!token){
-  await alert('Precisa logar primeiro!')  
-  window.location.href = "../pages/login.html";
-}
-
-
+onAuthStateChanged(auth, (user) => {
+  if (!user) {
+    alert('Precisa logar primeiro!');
+    window.location.href = "../pages/login.html";
+  }
+});
 
 document.addEventListener("DOMContentLoaded", async () => {
   const vagasContainer = document.querySelector(".vagas-grid");
@@ -45,11 +38,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     vagasContainer.appendChild(div);
   });
 });
-botao_sair.addEventListener('click', async () => {
-  logout();
-  window.location.href = "pages/login.html";
-});
 
+botao_sair.addEventListener('click', async () => {
+  await signOut(auth);
+  window.location.href = "../pages/login.html";
+});
 
 function atualizarCor(div) {
   const status = div.dataset.status;
@@ -60,7 +53,4 @@ function atualizarCor(div) {
     div.style.backgroundColor = "#f44336";
     div.style.color = "#fff";
   }
-
-
-
 }
